@@ -103,7 +103,7 @@
                     <input type="text" id="prod-link" placeholder="https://s.shopee.vn/..." class="input-field">
                 </div>
 
-                    <button onclick="addProduct()" class="w-full bg-[#fcaf17] text-[#152b49] font-black py-3 rounded-xl uppercase hover:bg-[#152b49] hover:text-white transition-all">
+                    <button onclick="themSanPham()" class="w-full bg-[#fcaf17] text-[#152b49] font-black py-3 rounded-xl uppercase hover:bg-[#152b49] hover:text-white transition-all">
                         Xác nhận & Thêm Sản Phẩm
                     </button>
                 </div>
@@ -138,6 +138,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyCXkXgEDv8erSkcWHdsLtx9Lp6dDC92JEQ",
             authDomain: "yody-c1b5f.firebaseapp.com",
+            databaseURL: "https://yody-c1b5f-default-rtdb.asia-southeast1.firebasedatabase.app/",
             projectId: "yody-c1b5f",
             storageBucket: "yody-c1b5f.firebasestorage.app",
             messagingSenderId: "579148239213",
@@ -202,7 +203,7 @@
             });
         };
 
-        function addProduct() {
+        function themSanPham() {
             const pass = document.getElementById('admin-password').value;
             if (pass !== MY_PASSWORD) {
                 alert("Sai mật khẩu xác thực!");
