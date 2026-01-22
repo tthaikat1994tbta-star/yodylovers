@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="input-group">
                         <label class="input-label">Số sao (1-5)</label>
                         <input type="text" id="prod-rating" placeholder="4.9" class="input-field">
@@ -121,11 +121,6 @@
                     <div class="input-group">
                         <label class="input-label">Đã bán</label>
                         <input type="text" id="prod-sold" placeholder="1.2k+" class="input-field">
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label">Mật khẩu xác thực</label>
-                        <input type="password" id="admin-password" placeholder="..." class="input-field">
                     </div>
                 </div>
 
@@ -394,7 +389,16 @@
 
         function toggleAdmin() {
             const panel = document.getElementById('admin-panel');
-            panel.classList.toggle('hidden');
+            if (panel.classList.contains('hidden')) {
+                const pass = prompt("Nhập mật khẩu quản trị:");
+                if (pass === MY_PASSWORD) {
+                    panel.classList.remove('hidden');
+                } else if (pass !== null) {
+                    alert("Sai mật khẩu!");
+                }
+            } else {
+                panel.classList.add('hidden');
+            }
         }
 
         // Tải sản phẩm từ Firebase khi mở trang
@@ -416,12 +420,6 @@
         };
 
         function themSanPham() {
-            const pass = document.getElementById('admin-password').value;
-            if (pass !== MY_PASSWORD) {
-                alert("Sai mật khẩu xác thực!");
-                return;
-            }
-
             const name = document.getElementById('prod-name').value;
             const image = document.getElementById('prod-image').value;
             const price = document.getElementById('prod-price').value;
@@ -451,7 +449,6 @@
                 document.getElementById('prod-rating').value = '';
                 document.getElementById('prod-sold').value = '';
                 document.getElementById('prod-link').value = '';
-                document.getElementById('admin-password').value = '';
                 toggleAdmin();
                 alert("Đã thêm sản phẩm thành công!");
             })
